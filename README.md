@@ -14,13 +14,14 @@ Presently this test outputs the sequence of commands issued by `nvcc` (from the
 `--dryrun` flag) and the generated PTX (using the `-ptx`) flag.
 
 
-## Summary conclusion
+## Summary conclusions
 
-The use of the flag guarantees the output of code for all `__device__` functions
-in the generated PTX. Code generation for `__global__` functions is unaffected -
-for example, if a `__device__` function was inlined into a `__global__`
-function without `-rdc`, it will still be inlined when the PTX for the
-`__device__` function is emitted due to the use of the `-rdc` flag.
+The use of the flag guarantees the emission of code for all `__device__`
+functions that are not forced to be inlined in the generated PTX. Code
+generation for `__global__` functions is unaffected - for example, if a
+`__device__` function was inlined into a `__global__` function without `-rdc`,
+it will still be inlined when the PTX for the `__device__` function is emitted
+due to the use of the `-rdc` flag.
 
 
 ## Building the example
